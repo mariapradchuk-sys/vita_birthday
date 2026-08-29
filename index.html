@@ -77,49 +77,87 @@ body {
    PAGES
 ========================= */
 .page {
+
     position: absolute;
+
     inset: 0;
-    display: none;
+
     width: 100%;
+
     height: 100vh;
+
+    display: none;
+
     align-items: center;
+
     justify-content: center;
+
     text-align: center;
+
     overflow: hidden;
-    
-    opacity:0;
-    transform: scale(1.02);
+
 }
+
 .page.active {
+
     display: flex;
-    animation: pageIn 0.6s ease forwards;
+
 }
-@keyframes pageIn {
+
+.page.slide-in {
+
+    display: flex;
+
+    animation: slideIn 0.55s ease forwards;
+
+}
+
+@keyframes slideIn {
+
     from {
+
         opacity: 0;
-        filter: brightness(1.8);
+
+        transform: translateX(100%);
+
     }
+
     to {
+
         opacity: 1;
-        filter: brightness(1);
+
+        transform: translateX(0);
+
     }
+
 }
-    .page::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(130, 0, 0, .28),
-            transparent 35%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(100, 100, 100, .08),
-            transparent 40%
-        );
-    pointer-events: none;
+
+.page.slide-out {
+
+    display: flex;
+
+    animation: slideOut 0.55s ease forwards;
+
+}
+
+@keyframes slideOut {
+
+    from {
+
+        opacity: 1;
+
+        transform: translateX(0);
+
+    }
+
+    to {
+
+        opacity: 0;
+
+        transform: translateX(-100%);
+
+    }
+
 }
 /* =========================
    COUNTER
@@ -696,15 +734,41 @@ const buttons = document.querySelectorAll(".next");
 const counter = document.getElementById("counter");
 let current = 0;
 function showPage(number) {
-    if (number < 0 || number >= pages.length) {
+
+    if (number < 0  number >= pages.length  number === current) {
+
         return;
+
     }
-    pages[current].classList.remove("active");
+
+    const oldPage = pages[current];
+
+    const newPage = pages[number];
+
+    oldPage.classList.remove("active");
+
+    oldPage.classList.add("slide-out");
+
+    newPage.classList.add("slide-in");
+
     current = number;
-    pages[current].classList.add("active");
+
     counter.textContent =
+
         String(current + 1).padStart(2, "0")
+
         + " / 06";
+
+    setTimeout(function() {
+
+        oldPage.classList.remove("slide-out");
+
+        newPage.classList.remove("slide-in");
+
+        newPage.classList.add("active");
+
+    }, 550);
+
 }
 /* NEXT BUTTONS */
 buttons.forEach(function(button) {
