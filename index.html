@@ -208,7 +208,39 @@ body {
 .next:hover {
     background: white;
     color: black;
+}.back {
+
+    position: absolute;
+
+    bottom: 35px;
+
+    left: 35px;
+
+    padding: 10px 18px;
+
+    border: 1px solid #444;
+
+    background: transparent;
+
+    color: #aaa;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
 }
+
+.back:hover {
+
+    color: white;
+
+    border-color: #991919;
+
+}    
 /* =========================
    SCREEN 1
 ========================= */
@@ -623,8 +655,11 @@ body {
             И даже пока не бомж. 😭
         </p>
     </div>
+    <button class="back">
+    ← BACK
+</button>
     <button class="next">
-        NEXT →
+    NEXT →
     </button>
 </section>
 <!-- =========================
@@ -747,6 +782,7 @@ body {
 <script>
 const pages = document.querySelectorAll(".page");
 const buttons = document.querySelectorAll(".next");
+ const backButtons = document.querySelectorAll(".back");
 const counter = document.getElementById("counter");
 let current = 0;
 function showPage(number) {
@@ -777,7 +813,18 @@ buttons.forEach(function(button) {
         showPage(current + 1);
     });
 });
-/* KEYBOARD */
+    /* BACK BUTTONS */
+
+backButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        showPage(current - 1);
+
+    });
+
+});
+    /* KEYBOARD */
 document.addEventListener("keydown", function(event) {
     if (
         event.key === "ArrowRight" ||
