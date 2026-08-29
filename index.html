@@ -11,95 +11,20 @@
     margin: 0;
     padding: 0;
 }
-html, body {
+html,
+body {
     width: 100%;
     height: 100%;
     overflow: hidden;
+}
 body {
-    background:
-        radial-gradient(circle at 50% 45%, rgba(130, 0, 0, .30), transparent 22%),
-        radial-gradient(circle at 15% 20%, rgba(100, 0, 0, .18), transparent 30%),
-        radial-gradient(circle at 85% 80%, rgba(120, 0, 0, .16), transparent 32%),
-        linear-gradient(135deg, #020202 0%, #120303 45%, #030303 100%);
+    background: #080808;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    background-size: 140% 140%;
-    animation: darkAtmosphere 12s ease-in-out infinite alternate;
 }
-@keyframes darkAtmosphere {
-    0% {
-        background-position: 0% 0%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 30% 100%;
-    }
-}
-    body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: 1999;
-    pointer-events: none;
-    opacity: .22;
-    background:
-        radial-gradient(
-            ellipse at 50% 0%,
-            rgba(255,255,255,.12),
-            transparent 35%
-        ),
-        repeating-linear-gradient(
-            105deg,
-            transparent 0px,
-            transparent 90px,
-            rgba(255,255,255,.018) 91px,
-            transparent 94px
-        );
-    mix-blend-mode: screen;
-}
-body::after {
-    content: "";
-    position: fixed;
-    inset: -50%;
-    z-index: 2000;
-    pointer-events: none;
-    opacity: .07;
-    background-image:
-        repeating-radial-gradient(
-            circle at 20% 30%,
-            transparent 0,
-            rgba(255,255,255,.6) 1px,
-            transparent 2px
-        );
-    background-size: 5px 5px;
-    animation: grain .2s steps(2) infinite;
-}
-@keyframes grain {
-    0% {
-        transform: translate(0,0);
-    }
-    25% {
-        transform: translate(2%,-1%);
-    }
-    50% {
-        transform: translate(-1%,2%);
-    }
-    75% {
-        transform: translate(1%,1%);
-    }
-    100% {
-        transform: translate(-2%,-1%);
-    }
-}
-    @keyframes grain {
-    0% { transform: translate(0,0); }
-    25% { transform: translate(2%,-1%); }
-    50% { transform: translate(-1%,2%); }
-    75% { transform: translate(1%,1%); }
-    100% { transform: translate(-2%,-1%); }
-}
+/* =========================
+   PAGES
+========================= */
 .page {
     position: absolute;
     inset: 0;
@@ -110,21 +35,9 @@ body::after {
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    opacity: 0;
 }
 .page.active {
     display: flex;
-    animation: pageIn .7s ease forwards;
-}
-@keyframes pageIn {
-    from {
-        opacity: 0;
-        transform: scale(1.03);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
 }
 .page::before {
     content: "";
@@ -133,25 +46,31 @@ body::after {
     background:
         radial-gradient(
             circle at 20% 20%,
-            rgba(130,0,0,.28),
+            rgba(130, 0, 0, .28),
             transparent 35%
         ),
         radial-gradient(
             circle at 80% 80%,
-            rgba(100,100,100,.08),
+            rgba(100, 100, 100, .08),
             transparent 40%
         );
     pointer-events: none;
 }
+/* =========================
+   COUNTER
+========================= */
 .counter {
     position: fixed;
     top: 22px;
     right: 25px;
     z-index: 100;
-    color: #777;
+    color: #888;
     font-size: 11px;
     letter-spacing: 4px;
 }
+/* =========================
+   BUTTON
+========================= */
 .next {
     position: absolute;
     bottom: 32px;
@@ -171,7 +90,9 @@ body::after {
     background: white;
     color: black;
 }
-/* SCREEN 1 */
+/* =========================
+   SCREEN 1
+========================= */
 .intro {
     position: relative;
     z-index: 10;
@@ -183,7 +104,7 @@ body::after {
 }
 .intro h1 {
     margin-top: 15px;
-    font-size: clamp(70px,16vw,190px);
+    font-size: clamp(70px, 16vw, 190px);
     line-height: .8;
     font-weight: 900;
     letter-spacing: 8px;
@@ -191,7 +112,7 @@ body::after {
 .age {
     margin-top: 15px;
     color: #991919;
-    font-size: clamp(80px,15vw,180px);
+    font-size: clamp(80px, 15vw, 180px);
     line-height: .8;
     font-weight: 900;
 }
@@ -201,7 +122,9 @@ body::after {
     font-size: 12px;
     letter-spacing: 8px;
 }
-/* SCREEN 2 */
+/* =========================
+   SCREEN 2
+========================= */
 .birthday {
     position: relative;
     z-index: 10;
@@ -209,7 +132,7 @@ body::after {
     max-width: 850px;
 }
 .birthday h2 {
-    font-size: clamp(40px,8vw,100px);
+    font-size: clamp(40px, 8vw, 100px);
     line-height: .95;
     font-weight: 900;
 }
@@ -223,18 +146,20 @@ body::after {
     color: #a71919;
     font-weight: bold;
 }
-/* SCREEN 3 */
+/* =========================
+   SCREEN 3
+========================= */
 .wishes {
     position: relative;
     z-index: 10;
 }
 .word {
     margin: 5px;
-    font-size: clamp(45px,9vw,110px);
+    font-size: clamp(45px, 9vw, 110px);
     font-weight: 900;
     letter-spacing: 7px;
-    animation: wish .7s ease forwards;
     opacity: 0;
+    animation: appear .8s forwards;
 }
 .word:nth-child(1) {
     animation-delay: .1s;
@@ -248,7 +173,7 @@ body::after {
 .word:nth-child(4) {
     animation-delay: 1s;
 }
-@keyframes wish {
+@keyframes appear {
     from {
         opacity: 0;
         transform: translateY(25px);
@@ -264,29 +189,32 @@ body::after {
     color: #888;
     font-size: 14px;
 }
-/* SCREEN 4 */
+/* =========================
+   SCREEN 4
+========================= */
 .old {
     position: relative;
     z-index: 10;
 }
 .old h2 {
     color: #991919;
-    font-size: clamp(130px,25vw,300px);
+    font-size: clamp(130px, 25vw, 300px);
     line-height: .7;
     font-weight: 900;
 }
 .old h3 {
     margin-top: 50px;
-    font-size: clamp(25px,4vw,45px);
+    font-size: clamp(25px, 4vw, 45px);
 }
 .old p {
     margin-top: 15px;
     color: #999;
     line-height: 1.7;
 }
+/* VINYL */
 .vinyl {
     position: absolute;
-    width: min(450px,75vw);
+    width: min(450px, 75vw);
     aspect-ratio: 1;
     right: -120px;
     top: 50%;
@@ -295,13 +223,14 @@ body::after {
     background:
         repeating-radial-gradient(
             circle,
-            #050505 0,
+            #050505 0px,
             #050505 5px,
             #171717 7px,
             #080808 10px
         );
+    box-shadow:
+        0 0 50px rgba(0,0,0,.8);
     animation: spin 8s linear infinite;
-    box-shadow: 0 0 50px rgba(0,0,0,.8);
 }
 .vinyl::after {
     content: "";
@@ -310,7 +239,7 @@ body::after {
     aspect-ratio: 1;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 50%;
     background: #991919;
 }
@@ -322,7 +251,9 @@ body::after {
         transform: translateY(-50%) rotate(360deg);
     }
 }
-/* SCREEN 5 */
+/* =========================
+   SCREEN 5
+========================= */
 .memories {
     position: relative;
     z-index: 10;
@@ -330,12 +261,12 @@ body::after {
     max-width: 1100px;
 }
 .memories h2 {
-    font-size: clamp(45px,8vw,95px);
+    font-size: clamp(45px, 8vw, 95px);
     font-weight: 900;
     letter-spacing: 5px;
 }
 .memories p {
-    width: min(700px,100%);
+    width: min(700px, 100%);
     margin: 15px auto 30px;
     color: #aaa;
     line-height: 1.6;
@@ -351,9 +282,10 @@ body::after {
     padding: 10px 10px 28px;
     background: #eee;
     color: #111;
-    box-shadow: 0 20px 40px rgba(0,0,0,.7);
+    box-shadow:
+        0 20px 40px rgba(0,0,0,.7);
+    transition: .35s;
     cursor: pointer;
-    transition: transform .35s ease;
 }
 .photo:nth-child(1) {
     transform: rotate(-5deg);
@@ -365,7 +297,7 @@ body::after {
     transform: rotate(-3deg);
 }
 .photo:hover {
-    transform: rotate(0) scale(1.06);
+    transform: rotate(0) scale(1.08);
     z-index: 20;
 }
 .photo img {
@@ -381,48 +313,9 @@ body::after {
     font-weight: bold;
     letter-spacing: 2px;
 }
-/* LARGE PHOTO */
-.photo-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 5000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 25px;
-    background: rgba(0,0,0,.94);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity .3s ease;
-}
-.photo-modal.open {
-    opacity: 1;
-    visibility: visible;
-}
-.photo-modal img {
-    display: block;
-    max-width: 92vw;
-    max-height: 88vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    transform: scale(.7);
-    transition: transform .35s ease;
-    box-shadow: 0 25px 70px rgba(0,0,0,.8);
-}
-.photo-modal.open img {
-    transform: scale(1);
-}
-.close-photo {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 40px;
-    cursor: pointer;
-    z-index: 10;
-}
-/* SCREEN 6 */
+/* =========================
+   SCREEN 6
+========================= */
 .final {
     position: relative;
     z-index: 10;
@@ -435,7 +328,7 @@ body::after {
 }
 .final h2 {
     margin: 25px 0;
-    font-size: clamp(60px,11vw,150px);
+    font-size: clamp(60px, 11vw, 150px);
     line-height: .85;
     font-weight: 900;
 }
@@ -448,7 +341,7 @@ body::after {
 }
 .happy {
     margin-top: 30px;
-    font-size: clamp(30px,5vw,70px);
+    font-size: clamp(30px, 5vw, 70px);
     font-weight: 900;
     letter-spacing: 3px;
 }
@@ -458,8 +351,37 @@ body::after {
     font-size: 12px;
     letter-spacing: 7px;
 }
-/* MOBILE */
-@media (max-width:700px) {
+/* =========================
+   MOBILE
+========================= */
+@media .photo-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.92);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+.photo-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+.photo-modal img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0,0,0,.8);
+    transform: scale(.8);
+    transition: .3s;
+}
+.photo-modal.open img {
+    transform: scale(1);
+}max-width: 700px) {
     .gallery {
         gap: 7px;
     }
@@ -487,10 +409,6 @@ body::after {
         right: -140px;
         opacity: .35;
     }
-    .counter {
-        top: 18px;
-        right: 18px;
-    }
 }
 </style>
 </head>
@@ -498,12 +416,20 @@ body::after {
 <div class="counter" id="counter">
 01 / 06
 </div>
-<!-- SCREEN 1 -->
+<!-- =========================
+     SCREEN 1
+========================= -->
 <section class="page active">
     <div class="intro">
-        <small>THE STORY OF</small>
-        <h1>VITYA</h1>
-        <div class="age">22</div>
+        <small>
+            THE STORY OF
+        </small>
+        <h1>
+            VITYA
+        </h1>
+        <div class="age">
+            22
+        </div>
         <div class="rock">
             ROCK'N'ROLL NEVER DIES.
         </div>
@@ -512,7 +438,9 @@ body::after {
         ENTER →
     </button>
 </section>
-<!-- SCREEN 2 -->
+<!-- =========================
+     SCREEN 2
+========================= -->
 <section class="page">
     <div class="birthday">
         <h2>
@@ -532,13 +460,23 @@ body::after {
         NEXT →
     </button>
 </section>
-<!-- SCREEN 3 -->
+<!-- =========================
+     SCREEN 3
+========================= -->
 <section class="page">
     <div class="wishes">
-        <div class="word">HAPPINESS.</div>
-        <div class="word">HEALTH.</div>
-        <div class="word">MONEY.</div>
-        <div class="word">SUCCESS.</div>
+        <div class="word">
+            HAPPINESS.
+        </div>
+        <div class="word">
+            HEALTH.
+        </div>
+        <div class="word">
+            MONEY.
+        </div>
+        <div class="word">
+            SUCCESS.
+        </div>
         <small>
             И чтоб братья тебя не сильно доставали)) 😂
         </small>
@@ -547,11 +485,15 @@ body::after {
         NEXT →
     </button>
 </section>
-<!-- SCREEN 4 -->
+<!-- =========================
+     SCREEN 4
+========================= -->
 <section class="page">
     <div class="vinyl"></div>
     <div class="old">
-        <h2>22.</h2>
+        <h2>
+            22.
+        </h2>
         <h3>
             ТЫ ЕЩЁ НЕ СТАРЫЙ.
         </h3>
@@ -565,7 +507,9 @@ body::after {
         NEXT →
     </button>
 </section>
-<!-- SCREEN 5 -->
+<!-- =========================
+     SCREEN 5
+========================= -->
 <section class="page">
     <div class="memories">
         <h2>
@@ -580,28 +524,19 @@ body::after {
         </p>
         <div class="gallery">
             <div class="photo">
-                <img
-                    src="photo_2026-08-29%2013.31.40.jpeg"
-                    onclick="openPhoto(this)"
-                >
+                <img src="photo_2026-08-29%2013.31.40.jpeg">
                 <span>
                     THE LEGEND
                 </span>
             </div>
             <div class="photo">
-                <img
-                    src="photo_2026-08-29%2013.31.56.jpeg"
-                    onclick="openPhoto(this)"
-                >
+                <img src="photo_2026-08-29%2013.31.56.jpeg">
                 <span>
                     THE CREW
                 </span>
             </div>
             <div class="photo">
-                <img
-                    src="photo_2026-08-29%2013.32.11.jpeg"
-                    onclick="openPhoto(this)"
-                >
+                <img src="photo_2026-08-29%2013.32.11.jpeg">
                 <span>
                     ROCK'N'ROLL
                 </span>
@@ -612,7 +547,9 @@ body::after {
         NEXT →
     </button>
 </section>
-<!-- SCREEN 6 -->
+<!-- =========================
+     SCREEN 6
+========================= -->
 <section class="page">
     <div class="final">
         <div class="years">
@@ -638,117 +575,74 @@ body::after {
         </div>
     </div>
 </section>
-<!-- PHOTO WINDOW -->
-<div
-    class="photo-modal"
-    id="photoModal"
-    onclick="closePhoto()"
->
-    <div
-        class="close-photo"
-        onclick="event.stopPropagation(); closePhoto();"
-    >
-        ×
-    </div>
-    <img
-        id="bigPhoto"
-        src=""
-        alt="Photo"
-        onclick="event.stopPropagation()"
-    >
-</div>
 <script>
-const pages =
-    document.querySelectorAll(".page");
-const buttons =
-    document.querySelectorAll(".next");
-const counter =
-    document.getElementById("counter");
+const pages = document.querySelectorAll(".page");
+const buttons = document.querySelectorAll(".next");
+const counter = document.getElementById("counter");
 let current = 0;
-/* ПЕРЕКЛЮЧЕНИЕ ЭКРАНОВ */
 function showPage(number) {
-    if (number < 0 ||
-        number >= pages.length
-    ) {
+    if (number < 0 || number >= pages.length) {
         return;
     }
     pages[current].classList.remove("active");
     current = number;
     pages[current].classList.add("active");
     counter.textContent =
-        String(current + 1).padStart(2,"0")
+        String(current + 1).padStart(2, "0")
         + " / 06";
 }
-/* КНОПКИ */
+/* NEXT BUTTONS */
 buttons.forEach(function(button) {
-    button.addEventListener(
-        "click",
-        function() {
-            showPage(current + 1);
-        }
-    );
+    button.addEventListener("click", function() {
+        showPage(current + 1);
+    });
 });
-/* КЛАВИАТУРА */
-document.addEventListener(
-    "keydown",
-    function(event) {
-        if (
-            event.key === "ArrowRight" ||
-            event.key === " "
-        ) {
-            showPage(current + 1);
-        }
-        if (
-            event.key === "ArrowLeft"
-        ) {
-            showPage(current - 1);
-        }
-        if (
-            event.key === "Escape"
-        ) {
-            closePhoto();
-        }
+/* KEYBOARD */
+document.addEventListener("keydown", function(event) {
+    if (
+        event.key === "ArrowRight" ||
+        event.key === " "
+    ) {
+        showPage(current + 1);
     }
-);
-/* ОТКРЫТИЕ ФОТО */
-function openPhoto(image) {
-    const modal =
-        document.getElementById("photoModal");
-    const big =
-        document.getElementById("bigPhoto");
-    big.src = image.src;
-    modal.classList.add("open");
-}
-/* ЗАКРЫТИЕ ФОТО */
-function closePhoto() {
-    document
-        .getElementById("photoModal")
-        .classList.remove("open");
-}
-/* СВАЙП НА ТЕЛЕФОНЕ */
+    if (event.key === "ArrowLeft") {
+        showPage(current - 1);
+    }
+});
+/* PHONE SWIPE */
 let touchStart = 0;
-document.addEventListener(
-    "touchstart",
-    function(event) {
-        touchStart =
-            event.touches[0].clientX;
+document.addEventListener("touchstart", function(event) {
+    touchStart = event.touches[0].clientX;
+});
+document.addEventListener("touchend", function(event) {
+    const touchEnd =
+        event.changedTouches[0].clientX;
+    const difference =
+        touchStart - touchEnd;
+    if (difference > 70) {
+        showPage(current + 1);
     }
-);
-document.addEventListener(
-    "touchend",
-    function(event) {
-        const touchEnd =
-            event.changedTouches[0].clientX;
-        const difference =
-            touchStart - touchEnd;
-        if (difference > 70) {
-            showPage(current + 1);
-        }
-        if (difference < -70) {
-            showPage(current - 1);
-        }
+    if (difference < -70) {
+        showPage(current - 1);
     }
-);
+});
 </script>
+    <div class="photo-modal" id="photoModal">
+    <img id="modalImage" src="" alt="photo">
+</div>
+<script>
+const photoModal = document.getElementById("photoModal");
+const modalImage = document.getElementById("modalImage");
+document.querySelectorAll(".photo img").forEach(function(photo) {
+    photo.addEventListener("click", function() {
+        modalImage.src = photo.src;
+        photoModal.classList.add("open");
+    });
+});
+photoModal.addEventListener("click", function() {
+    photoModal.classList.remove("open");
+});
+</script>
+    
 </body>
 </html>
