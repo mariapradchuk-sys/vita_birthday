@@ -354,7 +354,34 @@ body {
 /* =========================
    MOBILE
 ========================= */
-@media (max-width: 700px) {
+@media .photo-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.92);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+.photo-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+.photo-modal img {
+    max-width: 90vw;
+    max-height: 85vh;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0,0,0,.8);
+    transform: scale(.8);
+    transition: .3s;
+}
+.photo-modal.open img {
+    transform: scale(1);
+}max-width: 700px) {
     .gallery {
         gap: 7px;
     }
@@ -600,5 +627,22 @@ document.addEventListener("touchend", function(event) {
     }
 });
 </script>
+    <div class="photo-modal" id="photoModal">
+    <img id="modalImage" src="" alt="photo">
+</div>
+<script>
+const photoModal = document.getElementById("photoModal");
+const modalImage = document.getElementById("modalImage");
+document.querySelectorAll(".photo img").forEach(function(photo) {
+    photo.addEventListener("click", function() {
+        modalImage.src = photo.src;
+        photoModal.classList.add("open");
+    });
+});
+photoModal.addEventListener("click", function() {
+    photoModal.classList.remove("open");
+});
+</script>
+    
 </body>
 </html>
