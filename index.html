@@ -101,10 +101,25 @@ body {
 .page.active {
 
     display: flex;
+    animation: pageFade 0.35s ease;
+    }
+    
+@keyframes pageFade {
+
+    from {
+
+        opacity: 0;
+
+    }
+
+    to {
+
+        opacity: 1;
+
+    }
 
 }
-
-.page.slide-in {
+    .page.slide-in {
 
     display: flex;
 
