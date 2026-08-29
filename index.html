@@ -26,6 +26,48 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     position: relative;
 }
+    body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9990;
+    opacity: 0.12;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,0.04) 0px,
+            rgba(255,255,255,0.04) 1px,
+            transparent 1px,
+            transparent 3px
+        );
+}
+    body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9991;
+    background: radial-gradient(
+        ellipse at center,
+        transparent 45%,
+        rgba(0, 0, 0, 0.35) 100%
+    );
+}
+    .rec {
+    position: fixed;
+    top: 22px;
+    left: 25px;
+    z-index: 10000;
+    font-family: "Courier New", monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #ddd;
+    opacity: 0.75;
+}
+.rec::first-letter {
+    color: #991919;
+}
 /* =========================
    PAGES
 ========================= */
@@ -437,6 +479,7 @@ body {
 <div class="counter" id="counter">
 01 / 06
 </div>
+    <div class="rec">● REC</div>
 <!-- =========================
      SCREEN 1
 ========================= -->
