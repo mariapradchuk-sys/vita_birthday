@@ -736,23 +736,17 @@ const counter = document.getElementById("counter");
 let current = 0;
 function showPage(number) {
 
-    if (number < 0  number >= pages.length  number === current) {
+    if (number < 0 || number >= pages.length) {
 
         return;
 
     }
 
-    const oldPage = pages[current];
-
-    const newPage = pages[number];
-
-    oldPage.classList.remove("active");
-
-    oldPage.classList.add("slide-out");
-
-    newPage.classList.add("slide-in");
+    pages[current].classList.remove("active");
 
     current = number;
+
+    pages[current].classList.add("active");
 
     counter.textContent =
 
@@ -760,17 +754,8 @@ function showPage(number) {
 
         + " / 06";
 
-    setTimeout(function() {
-
-        oldPage.classList.remove("slide-out");
-
-        newPage.classList.remove("slide-in");
-
-        newPage.classList.add("active");
-
-    }, 550);
-
 }
+    
 /* NEXT BUTTONS */
 buttons.forEach(function(button) {
     button.addEventListener("click", function() {
