@@ -1,33 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VITYA — 22</title>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #080808;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+.page {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.page.active {
+    display: flex;
+}
+.content {
+    width: 90%;
+}
+.small {
+    color: #999;
+    letter-spacing: 7px;
+    font-size: 12px;
+}
+h1 {
+    font-size: clamp(70px, 15vw, 180px);
+    line-height: .8;
+    font-weight: 900;
+    letter-spacing: 8px;
+}
+.age {
+    color: #991919;
+    font-size: clamp(80px, 15vw, 180px);
+    font-weight: 900;
+}
+.rock {
+    margin-top: 30px;
+    color: #aaa;
+    letter-spacing: 7px;
+    font-size: 12px;
+}
+button {
+    position: absolute;
+    bottom: 35px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 13px 30px;
+    background: transparent;
+    color: white;
+    border: 1px solid #555;
+    letter-spacing: 4px;
+    cursor: pointer;
+}
+button:hover {
+    background: white;
+    color: black;
+}
+</style>
+</head>
 <body>
-<h1>VITYA 22</h1>
-</body>
-</html>
-<div class="small">THE STORY OF</div>
-
-    <h1>VITYA</h1>
-
-    <div class="age">22</div>
-
-    <div class="rock">
-        ROCK'N'ROLL NEVER DIES.
+<div class="page active">
+    <div class="content">
+        <div class="small">THE STORY OF</div>
+        <h1>VITYA</h1>
+        <div class="age">22</div>
+        <div class="rock">
+            ROCK'N'ROLL NEVER DIES.
+        </div>
     </div>
-
+    <button onclick="nextPage()">ENTER →</button>
 </div>
-
-<button onclick="nextPage()">ENTER →</button>
-    <div class="small">HAPPY BIRTHDAY</div>
-
-    <h1>ВИТЬ! 🖤</h1>
-
-    <p style="margin-top:30px;color:#aaa;font-size:18px;line-height:1.7;">
-        Ну что, легенда…<br>
-        <b style="color:#991919;">22 годика.</b><br><br>
-        Да, ты всё ещё жив.<br>
-        И даже пока не бомж. 😭
-    </p>
-
+<div class="page">
+    <div class="content">
+        <div class="small">HAPPY BIRTHDAY</div>
+        <h1>ВИТЬ! 🖤</h1>
+        <p style="margin-top:30px;color:#aaa;font-size:18px;line-height:1.7;">
+            Ну что, легенда…<br>
+            <b style="color:#991919;">22 годика.</b><br><br>
+            Да, ты всё ещё жив.<br>
+            И даже пока не бомж. 😭
+        </p>
+    </div>
+    <button onclick="nextPage()">NEXT →</button>
 </div>
+<script>
+let current = 0;
 
-<button onclick="nextPage()">NEXT →</button>
+const pages = document.querySelectorAll(".page");
+
+function nextPage() {
+
+    if (current >= pages.length - 1) {
+
+        return;
+
+    }
+
+    pages[current].classList.remove("active");
+
+    current++;
+
+    pages[current].classList.add("active");
+
+}
+
+</script>
+
+</body>
+
+</html>
