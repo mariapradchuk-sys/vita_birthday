@@ -230,43 +230,57 @@ body {
 
 }
 
-    .film-strip {
+.film-strip {
 
     position: fixed;
 
-    left: 50%;
+    left: -70px;
 
-    bottom: 18px;
-
-    transform: translateX(-50%);
+    bottom: 95px;
 
     display: flex;
 
-    gap: 6px;
+    gap: 12px;
 
-    padding: 5px 8px;
+    padding: 10px 18px;
 
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    transform: rotate(-7deg);
 
-    background: rgba(0, 0, 0, 0.35);
+    background: rgba(91, 55, 31, 0.72);
 
-    z-index: 9996;
+    border-top: 2px solid rgba(45, 25, 15, 0.7);
+
+    border-bottom: 2px solid rgba(45, 25, 15, 0.7);
+
+    z-index: 1;
 
     pointer-events: none;
+
+    opacity: 0.38;
 
 }
 
 .film-strip span {
 
-    width: 42px;
-
-    height: 28px;
-
-    border: 1px solid rgba(255, 255, 255, 0.22);
-
-    background: rgba(255, 255, 255, 0.05);
-
     position: relative;
+
+    width: 75px;
+
+    height: 48px;
+
+    flex-shrink: 0;
+
+    background:
+
+        linear-gradient(
+
+            rgba(190, 125, 65, 0.22),
+
+            rgba(45, 25, 15, 0.25)
+
+        );
+
+    border: 2px solid rgba(35, 20, 12, 0.65);
 
 }
 
@@ -278,23 +292,23 @@ body {
 
     position: absolute;
 
-    left: 3px;
+    left: 0;
 
-    right: 3px;
+    right: 0;
 
-    height: 4px;
+    height: 6px;
 
     background: repeating-linear-gradient(
 
         to right,
 
-        rgba(255, 255, 255, 0.25) 0px,
+        rgba(35, 20, 12, 0.8) 0px,
 
-        rgba(255, 255, 255, 0.25) 5px,
+        rgba(35, 20, 12, 0.8) 7px,
 
-        transparent 5px,
+        transparent 7px,
 
-        transparent 9px
+        transparent 14px
 
     );
 
@@ -302,13 +316,13 @@ body {
 
 .film-strip span::before {
 
-    top: -6px;
+    top: -8px;
 
 }
 
 .film-strip span::after {
 
-    bottom: -6px;
+    bottom: -8px;
 
 }
 /* =========================
