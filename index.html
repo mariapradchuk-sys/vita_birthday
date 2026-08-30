@@ -264,6 +264,87 @@ body {
     pointer-events: none;
 
 }
+    .film-strip {
+
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+
+    gap: 6px;
+
+    padding: 5px 8px;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    background: rgba(0, 0, 0, 0.35);
+
+    z-index: 9996;
+
+    pointer-events: none;
+
+}
+
+.film-strip span {
+
+    width: 42px;
+
+    height: 28px;
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+
+    background: rgba(255, 255, 255, 0.05);
+
+    position: relative;
+
+}
+
+.film-strip span::before,
+
+.film-strip span::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 3px;
+
+    right: 3px;
+
+    height: 4px;
+
+    background: repeating-linear-gradient(
+
+        to right,
+
+        rgba(255, 255, 255, 0.25) 0px,
+
+        rgba(255, 255, 255, 0.25) 5px,
+
+        transparent 5px,
+
+        transparent 9px
+
+    );
+
+}
+
+.film-strip span::before {
+
+    top: -6px;
+
+}
+
+.film-strip span::after {
+
+    bottom: -6px;
+
+}
 /* =========================
    BUTTON
 ========================= */
@@ -697,7 +778,24 @@ body {
     <div class="camera-zoom">
     ZOOM 1.0×
 </div>
-    <div class="camera-focus">
+    <div class="film-strip">
+
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+</div>
+<div class="camera-focus">
 
     <span>AF</span>
 
