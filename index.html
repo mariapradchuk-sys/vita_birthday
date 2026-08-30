@@ -229,7 +229,57 @@ body {
     opacity: 0.65;
 
 }
+    .film-bg {
 
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0.28;
+
+}
+
+.film-bg svg {
+
+    width: 100%;
+
+    height: 100%;
+
+    overflow: visible;
+
+}
+
+.film-body {
+
+    fill: none;
+
+    stroke: rgba(92, 52, 28, 0.95);
+
+    stroke-width: 62;
+
+    stroke-linecap: round;
+
+}
+
+.film-holes {
+
+    fill: none;
+
+    stroke: rgba(25, 15, 8, 0.85);
+
+    stroke-width: 8;
+
+    stroke-dasharray: 12 18;
+
+}
 .film-strip {
 
     position: fixed;
@@ -792,25 +842,36 @@ body {
     <div class="camera-zoom">
     ZOOM 1.0×
 </div>
-    <div class="film-strip">
+    <div class="film-bg">
 
-    <span></span>
+    <svg viewBox="0 0 1200 500" preserveAspectRatio="none">
 
-    <span></span>
+        <path
 
-    <span></span>
+            class="film-body"
 
-    <span></span>
+            d="M-80,390
 
-    <span></span>
+               C140,260 230,470 430,350
 
-    <span></span>
+               S700,190 850,310
 
-    <span></span>
+               S1080,500 1280,300"
+
+        />
+
+        <g class="film-holes">
+
+            <path d="M-60,365 C140,235 230,445 430,325 S700,165 850,285 S1080,475 1260,275" />
+
+            <path d="M-60,415 C140,285 230,495 430,375 S700,215 850,335 S1080,525 1260,325" />
+
+        </g>
+
+    </svg>
 
 </div>
-    
-<div class="rec">● REC <span>00:22:06</span></div>
+    <div class="rec">● REC <span>00:22:06</span></div>
 <!-- =========================
      SCREEN 1
 ========================= -->
